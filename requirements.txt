@@ -1,0 +1,10 @@
+torch
+opencv-python-headless
+numpy
+pillow
+pandas
+matplotlib
+tqdm
+pyyaml
+scipy
+pycocotools

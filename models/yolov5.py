@@ -1,0 +1,63 @@
+import torch
+from torch import nn
+from typing import Tuple
+
+class YOLOv5(nn.Module):
+    def __init__(self, n_classes: int = 80):
+        super().__init__()
+        self.n_classes = n_classes
+
+        # Backbone
+        self.backbone = nn.Sequential(
+            nn.Conv2d(3, 32, kernel_size=3, stride=1, padding=1),
+            nn.BatchNorm2d(32),
+            nn.Hardswish(),
+            nn.Conv2d(32, 64, kernel_size=3, stride=2, padding=1),
+            nn.BatchNorm2d(64),
+            nn.Hardswish(),
+            nn.Conv2d(64, 64, kernel_size=1, stride=1, padding=0),
+            nn.BatchNorm2d(64),
+            nn.Hardswish(),
+            nn.Conv2d(64, 32, kernel_size=1, stride=1, padding=0),
+            nn.BatchNorm2d(32),
+            nn.Hardswish(),
+            nn.Conv2d(32, 64, kernel_size=3, stride=1, padding=1),
+            nn.BatchNorm2d(64),
+            nn.Hardswish(),
+            nn.Conv2d(64, 64, kernel_size=1, stride=1, padding=0),
+            nn.BatchNorm2d(64),
+            nn.Hardswish(),
+            nn.Conv2d(64, 32, kernel_size=1, stride=1, padding=0),
+            nn.BatchNorm2d(32),
+            nn.Hardswish(),
+            nn.Conv2d(32, 64, kernel_size=3, stride=1, padding=1),
+            nn.BatchNorm2d(64),
+            nn.Hardswish(),
+            nn.Conv2d(64, 128, kernel_size=3, stride=2, padding=1),
+            nn.BatchNorm2d(128),
+            nn.Hardswish(),
+            nn.Conv2d(128, 64, kernel_size=1, stride=1, padding=0),
+            nn.BatchNorm2d(64),
+            nn.Hardswish(),
+            nn.Conv2d(64, 128, kernel_size=3, stride=1, padding=1),
+            nn.BatchNorm2d(128),
+            nn.Hardswish(),
+            nn.Conv2d(128, 64, kernel_size=1, stride=1, padding=0),
+            nn.BatchNorm2d(64),
+            nn.Hardswish(),
+            nn.Conv2d(64, 128, kernel_size=3, stride=1, padding=1),
+            nn.BatchNorm2d(128),
+            nn.Hardswish(),
+            nn.Conv2d(128, 256, kernel_size=3, stride=2, padding=1),
+            nn.BatchNorm2d(256),
+            nn.Hardswish(),
+            nn.Conv2d(256, 128, kernel_size=1, stride=1, padding=0),
+            nn.BatchNorm2d(128),
+            nn.Hardswish(),
+            nn.Conv2d(128, 256, kernel_size=3, stride=1, padding=1),
+            nn.BatchNorm2d(256),
+            nn.Hardswish(),
+            nn.Conv2d(256, 128, kernel_size=1, stride=1, padding=0),
+            nn.BatchNorm2d(128),
+            nn.Hardswish(),
+            nn.Conv2d(128, 256, kernel_size=3,

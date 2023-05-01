@@ -15,7 +15,7 @@ pip install -r requirements.txt
 To run the example code, use the following command:
 
 ```sh
-python examples/example.py
+python examples/example.ipynb
 ```
 
 ## Author
